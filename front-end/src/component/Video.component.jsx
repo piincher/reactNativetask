@@ -1,16 +1,19 @@
 import { Link } from 'react-router-dom';
 const Video = ({ video }) => {
 	return (
-		<div className="p-20 bg-purple-100">
-			<div className="bg-white rounded-lg shadow-lg w-full md:w-1/2">
-				<img src={video.image} alt={video.name} className="rounded-t-lg" />
-				<div className="p-6">
-					<h2 className="font-bold mb-2 text-2xl text-purple-800">{video.name}</h2>
-					<p className="text-purple-700 mb-2">{video.description}</p>
-					<Link to={`/video/${video._id}`}>Voir la video</Link>
-				</div>
+		<Link
+			to={`/videos/${video._id}`}
+			className="container mx-auto shadow-lg rounded-lg max-w-md hover:shadow-2xl transition duration-300"
+		>
+			<img src={video.image} alt="" className="rounded-t-lg w-full" />
+			<div className="p-6">
+				<h1 className="md:text-1xl text-xl hover:text-green-600 transition duration-200  font-bold text-gray-900 ">
+					{video.name}
+				</h1>
+				<p className="text-gray-700 my-2 hover-text-900 ">{video.description}</p>
 			</div>
-		</div>
+		</Link>
 	);
 };
+
 export default Video;
