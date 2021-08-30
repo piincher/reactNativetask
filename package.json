@@ -3,10 +3,13 @@
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
+	"type": "module",
 	"scripts": {
 		"start:server": "nodemon back-end/server.js",
 		"start:client": "npm start --prefix front-end",
-		"dev": "concurrently npm:start:*"
+		"dev": "concurrently npm:start:*",
+		"data:import": "node back-end/seedr",
+		"data:destroy": "node back-end/seedr -d"
 	},
 	"keywords": [],
 	"author": "",
@@ -15,5 +18,12 @@
 		"concurrently": "^6.2.1",
 		"express": "^4.17.1",
 		"nodemon": "^2.0.12"
+	},
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"colors": "^1.4.0",
+		"dotenv": "^10.0.0",
+		"express-async-handler": "^1.1.4",
+		"mongoose": "^6.0.1"
 	}
 }

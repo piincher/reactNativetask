@@ -1,17 +1,17 @@
-const express = require('express');
-const videos = require('./products');
+import express from 'express';
+import dotenv from 'dotenv';
+import colors from 'colors';
+import userRoutes from './routes/userRoutes.js';
+import connectDB from './config/db.js';
+
 const app = express();
+app.use(express.json());
+dotenv.config();
+connectDB();
 
-app.get('/', (req, res) => {
-	res.send('helooo');
-});
+app.use('/api/v1/users', userRoutes);
 
-app.get('/api/videos', (req, res) => {
-	res.json(videos);
+const PORT = process.env.PORT;
+app.listen(PORT, () => {
+	console.log(`server is running in ${PORT} `.bgBlue.underline);
 });
-app.get('/api/videos/:id', (req, res) => {
-	console.log(req);
-	const video = videos.find((video) => video._id === req.params.id);
-	res.json(video);
-});
-app.listen(5000, console.log('api is runing '));
