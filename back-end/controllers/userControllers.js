@@ -22,6 +22,10 @@ const authUser = asycHandler(async (req, res) => {
 	}
 });
 
+//@desc Auth User
+//@route Get /api/users/profile
+//@access private
+
 const getUserProfile = asycHandler(async (req, res) => {
 	const user = await User.findById(req.user._id);
 	if (user) {
